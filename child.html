@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Child</title>
+</head>
+<script>
+    // 보내기
+    window.onload = function() {
+        window.parent.postMessage({ Hello: 'parent' }, '*');
+    };
+    // 저장한 것 가져오기
+    window.addEventListener('message', function(e) {
+        if (e.origin === '/'){
+            // 어디서 온 데이터인지 체크
+            console.log(e.data); // parentDummy
+        }
+        console.log(e.data); // parentDummy
+    });
+
+    function closeBtn() {
+        window.parent.postMessage({closeWindow:"parent"},'*');
+    }
+</script>
+<body>
+
+<div>자식</div>
+<div class="child-btn" onclick="closeBtn()">버튼</div>
+
+
+</body>
+</html>

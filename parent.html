@@ -7,20 +7,23 @@
         // 저장하기
         localStorage.setItem('dummy', 'parentDummy');
         <!--메세지를 받을 이벤트 리스너를 등록-->
+        console.log('1');
         window.addEventListener('message', function(e) {
             //받기
             console.log(e.data); // { hello: 'parent' }
             var item = localStorage.getItem('dummy');
             console.log(item); // parentDummy
             document.getElementById('iframe').contentWindow.postMessage(item, '*');
-
+            console.log('2');
             if (JSON.stringify(e.data) === "{\"closeWindow\":\"parent\"}"){
                 changeItem();
             }
         });
 
+
         function changeItem() {
-            alert("You've clicked an element inside an iframe!")
+            console.log('3');
+            // alert("You've clicked an element inside an iframe!")
             var pItem = document.getElementById("parent-item");
             var getText = pItem.textContent || pItem.innerText;
             if (getText === "A") {
@@ -36,7 +39,6 @@
 <div>부모</div>
 <div id="parent-item">A</div>
 <iframe id="iframe" src="./child.html"></iframe>
-
 
 </body>
 </html>

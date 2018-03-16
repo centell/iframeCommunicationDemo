@@ -18,15 +18,15 @@
         console.log(e.data); // parentDummy
     });
 
-    function closeBtn() {
+    // 클릭해서 보내기
+    function chageBtn() {
         window.parent.postMessage({closeWindow:"parent"},'*');
     }
 </script>
 <body>
 
 <div>자식</div>
-<div class="child-btn" onclick="closeBtn()">버튼</div>
-
+<div class="child-btn" onclick="chageBtn()">버튼</div>
 
 </body>
 </html>
